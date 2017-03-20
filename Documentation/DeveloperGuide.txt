@@ -1,0 +1,19 @@
+# CSHARP.IO
+This library wraps System.IO to provide examples and starting points for working with File and other IO.
+
+LICENSE: Free to use provided details on fixes and/or extensions emailed to chris.williams@readwatchcreate.com
+
+References:
+
+Libraries: 
+
+* This project contains 1 C# projects:
+
+	1) CSHARP.IO 
+		- This project contains helper classes when working with files, text files and binary files. 
+
+Version History:
+
+	v1.0.0.9 - This is the initial release of the library. Prior versions are pre-release.
+
+
