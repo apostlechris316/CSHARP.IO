@@ -88,7 +88,10 @@ namespace CSHARP.IO
         public static void WriteContents(string fileName, string contents, bool overwrite)
         {
             // ensure the directory exists
-            Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+            if (string.IsNullOrEmpty(FileHelper.GetDirectoryFromFilePath(fileName)) == false)
+            {
+                Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+            }
 
             using (
                 var streamWriter = (File.Exists(fileName))
@@ -112,7 +115,11 @@ namespace CSHARP.IO
         public static void WriteContents(string fileName, string contents, bool overwrite, string encoding)
         {
             // ensure the directory exists
-            Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+            // ensure the directory exists
+            if (string.IsNullOrEmpty(FileHelper.GetDirectoryFromFilePath(fileName)) == false)
+            {
+                Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+            }
 
             if (overwrite)
             {

@@ -20,19 +20,47 @@ namespace CSHARP.IO
         /// <summary>
         /// Reads the full contents of the file to a string
         /// </summary>
+        /// <param name="fileInfo">FileInfo object used to open the stream for read</param>
+        /// <returns>Contents of the stream in a string</returns>
+        /// <remarks>NEW in v1.0.0.9</remarks>
+        public static string ReadContents(FileInfo fileInfo)
+        {
+            var streamReader = new StreamReader(fileInfo.OpenRead());
+            var returnValue = streamReader.ReadToEnd();
+            streamReader.Close();
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Reads the full contents of the file to a string
+        /// </summary>
         /// <param name="stream">Stream to get contents from</param>
         /// <returns>Contents of the stream in a string</returns>
         /// <remarks>Beware as stream passsed in is passed to StreamReader so likely it will be disposed when returned</remarks>
         public static string ReadContents(Stream stream)
         {
-            string returnValue;
-
-            using (var streamReader = new StreamReader(stream))
-            {
-                returnValue = streamReader.ReadToEnd();
-                streamReader.Close();
-            }
+            var streamReader = new StreamReader(stream);
+            var returnValue = streamReader.ReadToEnd();
+            streamReader.Close();
             return returnValue;
+        }
+
+        /// <summary>
+        /// Writes the contents supplied to a file. (Always Overwrites the file. If you wish to append use WriteContents with file path)
+        /// </summary>
+        /// <param name="fileInfo">FileInfo object used to open the stream for write</param>
+        /// <param name="contents">contents to write</param>
+        /// <remarks>NEW in v1.0.0.9</remarks>
+        public static void WriteContents(FileInfo fileInfo, string contents)
+        {
+            // ensure the directory exists
+            if (fileInfo.DirectoryName != null) Directory.CreateDirectory(fileInfo.DirectoryName);
+
+            // write the contents of the file
+            var streamWriter = new StreamWriter(fileInfo.OpenWrite());
+            streamWriter.Write(contents);
+            streamWriter.Flush();
+            streamWriter.Close();
         }
 
         /// <summary>

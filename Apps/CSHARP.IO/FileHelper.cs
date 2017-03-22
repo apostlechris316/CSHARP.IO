@@ -18,6 +18,8 @@ namespace CSHARP.IO
     /// </summary>
     public static class FileHelper
     {
+        #region Copy Directory
+
         /// <summary>
         /// Copies a directory 
         /// </summary>
@@ -60,6 +62,23 @@ namespace CSHARP.IO
                 CopyDirectory(dir, new DirectoryInfo(destinationDirectory));
             }
         }
+
+        #endregion
+
+        #region GetSubDirectories 
+
+        /// <summary>
+        /// returns a list of directories beneath a given directory
+        /// </summary>
+        /// <param name="directoryFullPath"></param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetSubDirectories(string directoryFullPath)
+        {
+            var source = new DirectoryInfo(directoryFullPath);
+            return source.GetDirectories();
+        }
+
+        #endregion
 
         /// <summary>
         /// Directory Separator (may be different depending on operation system
