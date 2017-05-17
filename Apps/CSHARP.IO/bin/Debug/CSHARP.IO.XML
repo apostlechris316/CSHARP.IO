@@ -36,6 +36,13 @@
             C# Class containing Static Methods to help working with files and file paths.
             </summary>
         </member>
+        <member name="M:CSHARP.IO.FileHelper.EnsureDirectoryExists(System.String)">
+            <summary>
+            Creaet a directory if it does not already exist
+            </summary>
+            <param name="directory"></param>
+            <remarks>NEW in v1.0.0.10</remarks>
+        </member>
         <member name="M:CSHARP.IO.FileHelper.CopyDirectory(System.String,System.String)">
             <summary>
             Copies a directory 
@@ -51,6 +58,13 @@
             <param name="source">Directory to copy from</param>
             <param name="destination">Directory to</param>
             <remarks>NEW in v1.0.0.8</remarks>
+        </member>
+        <member name="M:CSHARP.IO.FileHelper.GetSubDirectories(System.String)">
+            <summary>
+            returns a list of directories beneath a given directory
+            </summary>
+            <param name="directoryFullPath"></param>
+            <returns></returns>
         </member>
         <member name="F:CSHARP.IO.FileHelper.DirectorySeparator">
             <summary>
@@ -193,6 +207,14 @@
             Text Stream Helper Functions
             </summary>
         </member>
+        <member name="M:CSHARP.IO.TextStreamHelper.ReadContents(System.IO.FileInfo)">
+            <summary>
+            Reads the full contents of the file to a string
+            </summary>
+            <param name="fileInfo">FileInfo object used to open the stream for read</param>
+            <returns>Contents of the stream in a string</returns>
+            <remarks>NEW in v1.0.0.9</remarks>
+        </member>
         <member name="M:CSHARP.IO.TextStreamHelper.ReadContents(System.IO.Stream)">
             <summary>
             Reads the full contents of the file to a string
@@ -200,6 +222,14 @@
             <param name="stream">Stream to get contents from</param>
             <returns>Contents of the stream in a string</returns>
             <remarks>Beware as stream passsed in is passed to StreamReader so likely it will be disposed when returned</remarks>
+        </member>
+        <member name="M:CSHARP.IO.TextStreamHelper.WriteContents(System.IO.FileInfo,System.String)">
+            <summary>
+            Writes the contents supplied to a file. (Always Overwrites the file. If you wish to append use WriteContents with file path)
+            </summary>
+            <param name="fileInfo">FileInfo object used to open the stream for write</param>
+            <param name="contents">contents to write</param>
+            <remarks>NEW in v1.0.0.9</remarks>
         </member>
         <member name="M:CSHARP.IO.TextStreamHelper.WriteContents(System.String,System.String,System.Boolean)">
             <summary>

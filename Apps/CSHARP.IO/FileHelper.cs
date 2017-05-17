@@ -18,6 +18,20 @@ namespace CSHARP.IO
     /// </summary>
     public static class FileHelper
     {
+        /// <summary>
+        /// Creaet a directory if it does not already exist
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <remarks>NEW in v1.0.0.10</remarks>
+        public static void EnsureDirectoryExists(string directory)
+        {
+            if(Directory.Exists(directory) == false)
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+        }
+
         #region Copy Directory
 
         /// <summary>
