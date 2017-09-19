@@ -1,0 +1,17 @@
+Date Completed,Version,Library,Feature,Task
+9/17/2017,1.0.0.10,CSHARP.IO,File helper has new method Ensure Directory Exists ,New in this version
+,1.0.0.3,CSHARP.IO,Binary File helper has new method ReadStream,New in this version
+,1.0.0.8,CSHARP.IO,File helper has new method CopyDirectory,New in this version
+,1.0.0.2,CSHARP.IO,In FileHelper class DirectorySeparator now uses proper case,New in this version
+,1.0.0.4,CSHARP.IO,In FileHelper class new method IsFileOverMaxSize,New in this version
+,1.0.0.1,CSHARP.IO,In FileHelper new method EnsureTrailingDirectorySeparator,New in this version
+,1.0.0.9,CSHARP.IO,In FileHelper new method ConvertLocalUriToAbsoluteFilePath,New in this version
+,1.0.0.5,CSHARP.IO,TextFileHelper new method OpenInputFileStream,New in this version
+,1.0.0.7,CSHARP.IO,TextFileHelper OpenInputFileStream automatically closes and disposes to avoid memory leaks,"Notice that CloseInputFileStream was removed.  Use ""Using"" instead as it will handle Close and Dispose automatically for you."
+,1.0.0.7,CSHARP.IO,TextFileHelper ReadContent ,uses Using to avoid possible memory leak
+,1.0.0.8,CSHARP.IO,TextFileHelper ReadContent,Now supports passing in encoding
+,1.0.0.7,CSHARP.IO,TextFileHelper WriteContent,uses Using to avoid possible memory leak
+,1.0.0.8,CSHARP.IO,TextFileHelper WriteContent,Now supports passing in encoding
+,1.0.0.8,CSHARP.IO,In TextFileHelper new method ReplaceInFile,New in this version
+,1.0.0.9,CSHARP.IO,TextStreamHelper ReadContents now supports passing FileInfo object,
+,1.0.0.9,CSHARP.IO,TextStreamHelper WriteContents now supports passing FileInfo object,
