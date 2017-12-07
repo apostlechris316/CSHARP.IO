@@ -142,10 +142,14 @@ namespace CSHARP.IO
         /// </summary>
         /// <param name="fullPath">full path to a file</param>
         /// <returns>Directory portion of file path</returns>
+        /// <remarks>Fixed in v1.0.0.11 - Did not return the drive portion</remarks>
         public static string GetDirectoryFromFilePath(string fullPath)
         {
-            var fileDirectory = string.Empty;
             var fileParts = fullPath.Split(DirectorySeparator[0]);
+
+            // (FIXED in v1.0.0.11) if fileparts > 0 then we need to append the first part
+            var fileDirectory = (fileParts.Length > 0) ? fileParts[0] : string.Empty;
+
             for (var partNdx = 1; partNdx < fileParts.Length - 1; partNdx++)
             {
                 fileDirectory = fileDirectory + DirectorySeparator + fileParts[partNdx];

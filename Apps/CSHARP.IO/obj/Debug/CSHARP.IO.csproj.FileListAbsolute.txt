@@ -47,3 +47,12 @@ C:\_rwc\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.dll.lastcodeanalysissu
 C:\_rwc\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.dll
 C:\_rwc\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.pdb
 C:\_rwc\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.csprojResolveAssemblyReference.cache
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.XML
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.dll
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.pdb
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.dll.CodeAnalysisLog.xml
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Debug\CSHARP.IO.dll.lastcodeanalysissucceeded
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.csprojResolveAssemblyReference.cache
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.csproj.CoreCompileInputs.cache
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.dll
+C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Debug\CSHARP.IO.pdb

@@ -84,13 +84,15 @@ namespace CSHARP.IO
         /// <param name="fileName">file to write contents to</param>
         /// <param name="contents">contents to write</param>
         /// <param name="overwrite">if true overwrites existing file else appends to end</param>
-        /// <remarks>v1.0.0.7 Converted to using and removed redundant Close and Dispose</remarks>
+        /// <remarks>v1.0.0.7 Converted to using and removed redundant Close and Dispose.
+        /// v1.0.0.12 Optimized by getting directory path once instead of twice</remarks>
         public static void WriteContents(string fileName, string contents, bool overwrite)
         {
             // ensure the directory exists
-            if (string.IsNullOrEmpty(FileHelper.GetDirectoryFromFilePath(fileName)) == false)
+            var directory = FileHelper.GetDirectoryFromFilePath(fileName);
+            if (string.IsNullOrEmpty(directory) == false)
             {
-                Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+                Directory.CreateDirectory(directory);
             }
 
             using (
