@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace CSHARP.IO
+namespace CSHARPStandard.IO
 {
     /// <summary>
     /// C# Class containing Static Methods to help working with files and file paths.

@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSHARP.IO", "CSHARP.IO\CSHARP.IO.csproj", "{55888809-8EBF-42E2-A764-25F2178F3AC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSHARPStandard.IO", "CSHARPStandard.IO\CSHARPStandard.IO.csproj", "{262447E6-68F6-4C55-8A78-55A7891FD7E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Nuget Package - Debug|Any CPU = Nuget Package - Debug|Any CPU
+		Nuget Package - Release|Any CPU = Nuget Package - Release|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Nuget Package - Debug|Any CPU.ActiveCfg = Nuget Package - Debug|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Nuget Package - Debug|Any CPU.Build.0 = Nuget Package - Debug|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Nuget Package - Release|Any CPU.ActiveCfg = Nuget Package - Release|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Nuget Package - Release|Any CPU.Build.0 = Nuget Package - Release|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55888809-8EBF-42E2-A764-25F2178F3AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Nuget Package - Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Nuget Package - Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Nuget Package - Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Nuget Package - Release|Any CPU.Build.0 = Release|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262447E6-68F6-4C55-8A78-55A7891FD7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {209EE88C-0E4E-47ED-99D0-EB607FCC77D4}
+	EndGlobalSection
+EndGlobal
