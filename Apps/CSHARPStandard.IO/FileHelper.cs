@@ -18,7 +18,7 @@ namespace CSHARPStandard.IO
     /// <summary>
     /// C# Class containing Static Methods to help working with files and file paths.
     /// </summary>
-    public static class FileHelper
+    public class FileHelper
     {
         /// <summary>
         /// Look at all files in a given folder to see if they could have been new or edited.
@@ -30,7 +30,7 @@ namespace CSHARPStandard.IO
         /// <returns></returns>
         /// <remarks> NEW IN v1.0.0.13
         /// If you pass checkContents of false, then the results may not be totally accurrate</remarks>
-        public static Dictionary<FileInfo, string> GetPossibleNewOrEditedFilesInFolders(string firstFolder, string secondFolder, bool recursive, bool checkContents)
+        public Dictionary<FileInfo, string> GetPossibleNewOrEditedFilesInFolders(string firstFolder, string secondFolder, bool recursive, bool checkContents)
         {
             var results = new Dictionary<FileInfo, string>();
 
@@ -76,7 +76,7 @@ namespace CSHARPStandard.IO
         /// <param name="secondFilePath">Path to the second file to compare</param>
         /// <returns></returns>
         /// <remarks> NEW IN v1.0.0.13
-        public static bool FileCompare(string firstFilePath, string secondFilePath)
+        public bool FileCompare(string firstFilePath, string secondFilePath)
         {
             int file1byte;
             int file2byte;
@@ -91,40 +91,35 @@ namespace CSHARPStandard.IO
             }
 
             // Open the two files.
-            fs1 = new FileStream(firstFilePath, FileMode.Open);
-            fs2 = new FileStream(secondFilePath, FileMode.Open);
-
-            // Check the file sizes. If they are not the same, the files 
-            // are not the same.
-            if (fs1.Length != fs2.Length)
+            using (fs1 = new FileStream(firstFilePath, FileMode.Open))
             {
-                // Close the file
-                fs1.Close();
-                fs2.Close();
+                using (fs2 = new FileStream(secondFilePath, FileMode.Open))
+                {
+                    // Check the file sizes. If they are not the same, the files 
+                    // are not the same.
+                    if (fs1.Length != fs2.Length)
+                    {
+                        // Return false to indicate files are different
+                        return false;
+                    }
 
-                // Return false to indicate files are different
-                return false;
+                    // Read and compare a byte from each file until either a
+                    // non-matching set of bytes is found or until the end of
+                    // file1 is reached.
+                    do
+                    {
+                        // Read one byte from each file.
+                        file1byte = fs1.ReadByte();
+                        file2byte = fs2.ReadByte();
+                    }
+                    while ((file1byte == file2byte) && (file1byte != -1));
+
+                    // Return the success of the comparison. "file1byte" is 
+                    // equal to "file2byte" at this point only if the files are 
+                    // the same.
+                    return ((file1byte - file2byte) == 0);
+                }
             }
-
-            // Read and compare a byte from each file until either a
-            // non-matching set of bytes is found or until the end of
-            // file1 is reached.
-            do
-            {
-                // Read one byte from each file.
-                file1byte = fs1.ReadByte();
-                file2byte = fs2.ReadByte();
-            }
-            while ((file1byte == file2byte) && (file1byte != -1));
-
-            // Close the files.
-            fs1.Close();
-            fs2.Close();
-
-            // Return the success of the comparison. "file1byte" is 
-            // equal to "file2byte" at this point only if the files are 
-            // the same.
-            return ((file1byte - file2byte) == 0);
         }
 
         /// <summary>
@@ -132,7 +127,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="directory"></param>
         /// <remarks>NEW in v1.0.0.10</remarks>
-        public static void EnsureDirectoryExists(string directory)
+        public void EnsureDirectoryExists(string directory)
         {
             if(Directory.Exists(directory) == false)
             {
@@ -149,7 +144,7 @@ namespace CSHARPStandard.IO
         /// <param name="sourceFullPath">Full path to directory to copy from</param>
         /// <param name="destinationFullPath">Full path to copy directory to</param>
         /// <remarks>NEW in v1.0.0.8</remarks>
-        public static void CopyDirectory(string sourceFullPath, string destinationFullPath)
+        public void CopyDirectory(string sourceFullPath, string destinationFullPath)
         {
             var sourceDir = new DirectoryInfo(sourceFullPath);
             var destinationDir = new DirectoryInfo(destinationFullPath);
@@ -163,7 +158,7 @@ namespace CSHARPStandard.IO
         /// <param name="source">Directory to copy from</param>
         /// <param name="destination">Directory to</param>
         /// <remarks>NEW in v1.0.0.8</remarks>
-        public static void CopyDirectory(DirectoryInfo source, DirectoryInfo destination)
+        public void CopyDirectory(DirectoryInfo source, DirectoryInfo destination)
         {
             if (!destination.Exists)
             {
@@ -195,7 +190,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="directoryFullPath"></param>
         /// <returns></returns>
-        public static DirectoryInfo[] GetSubDirectories(string directoryFullPath)
+        public DirectoryInfo[] GetSubDirectories(string directoryFullPath)
         {
             var source = new DirectoryInfo(directoryFullPath);
             return source.GetDirectories();
@@ -217,7 +212,7 @@ namespace CSHARPStandard.IO
         /// <param name="directoryPath">Full path to directory</param>
         /// <returns>Directory with a slash on the end</returns>
         /// <remarks>NEW IN 1.0.0.1</remarks>
-        public static string EnsureTrailingDirectorySeparator(string directoryPath)
+        public string EnsureTrailingDirectorySeparator(string directoryPath)
         {
             return directoryPath + (directoryPath.EndsWith(DirectorySeparator) ? string.Empty : DirectorySeparator);
         }
@@ -227,7 +222,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="absoluteFilePath"></param>
         /// <returns></returns>
-        public static Uri ConvertAbsoluteFilePathToUri(string absoluteFilePath)
+        public Uri ConvertAbsoluteFilePathToUri(string absoluteFilePath)
         {
             return new Uri(absoluteFilePath, UriKind.Absolute);
         }
@@ -238,7 +233,7 @@ namespace CSHARPStandard.IO
         /// <param name="localUri"></param>
         /// <returns></returns>
         /// <remarks>New In v1.0.0.9</remarks>
-        public static string ConvertLocalUriToAbsoluteFilePath(Uri localUri)
+        public string ConvertLocalUriToAbsoluteFilePath(Uri localUri)
         {
             string localFilePath = localUri.LocalPath;
             if (localFilePath.StartsWith("\\")) throw new Exception("ConvertLocalUriToAbsoluteFilePath - ERROR: Local Uri is not actual local Uri (" + localFilePath  + ")");
@@ -252,7 +247,7 @@ namespace CSHARPStandard.IO
         /// <param name="fullPath">full path to a file</param>
         /// <returns>Directory portion of file path</returns>
         /// <remarks>Fixed in v1.0.0.11 - Did not return the drive portion</remarks>
-        public static string GetDirectoryFromFilePath(string fullPath)
+        public string GetDirectoryFromFilePath(string fullPath)
         {
             var fileParts = fullPath.Split(DirectorySeparator[0]);
 
@@ -272,7 +267,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="fullPath">full path to a directory folder</param>
         /// <returns>Directory folder name from full path</returns>
-        public static string GetDirectoryFolderNameFromDirectoryPath(string fullPath)
+        public string GetDirectoryFolderNameFromDirectoryPath(string fullPath)
         {
             var fileParts = fullPath.Split(DirectorySeparator[0]);
             return fileParts.Length > 0 ? fileParts[fileParts.Length - 1] : "";
@@ -283,7 +278,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="fullPath">full path to a file</param>
         /// <returns>Filename from full path</returns>
-        public static string GetFileNameFromFilePath(string fullPath)
+        public string GetFileNameFromFilePath(string fullPath)
         {
             var fileParts = fullPath.Split(DirectorySeparator[0]);
             return fileParts.Length > 0 ? fileParts[fileParts.Length - 1] : "";
@@ -298,7 +293,7 @@ namespace CSHARPStandard.IO
         /// </summary>
         /// <param name="fileSystemDirectoryPath">Full path to directory containing the files</param>
         /// <returns>An array of FileInfo object for each file in the directory</returns>
-        public static FileInfo [] GetFileListForDirectory(string fileSystemDirectoryPath)
+        public FileInfo [] GetFileListForDirectory(string fileSystemDirectoryPath)
         {
             // Get the list of files
             var di = new DirectoryInfo(fileSystemDirectoryPath);
@@ -312,7 +307,7 @@ namespace CSHARPStandard.IO
         /// <param name="searchPattern">Filter used to determine which files get returned</param>
         /// <param name="recursive">If true, returns all files for all subdirectories as well</param>
         /// <returns>An array of FileInfo object for each file in the directory matching the filter</returns>
-        public static FileInfo[] GetFilteredFileListForDirectory(string fileSystemDirectoryPath, string searchPattern, bool recursive)
+        public FileInfo[] GetFilteredFileListForDirectory(string fileSystemDirectoryPath, string searchPattern, bool recursive)
         {
             // Get the list of files
             var di = new DirectoryInfo(fileSystemDirectoryPath);
@@ -328,7 +323,7 @@ namespace CSHARPStandard.IO
         /// <param name="maxFileSize">Maximum File Size</param>
         /// <returns>True, if the file size is greater than the max file size passed in</returns>
         /// <remarks>NEW IN V1.0.0.4</remarks>
-        public static bool IsFileOverMaxSize(FileInfo fileInfo, long maxFileSize)
+        public bool IsFileOverMaxSize(FileInfo fileInfo, long maxFileSize)
         {
             return fileInfo.Length < maxFileSize;
         }

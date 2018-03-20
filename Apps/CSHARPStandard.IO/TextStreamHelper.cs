@@ -25,10 +25,11 @@ namespace CSHARPStandard.IO
         /// <remarks>NEW in v1.0.0.9</remarks>
         public static string ReadContents(FileInfo fileInfo)
         {
-            var streamReader = new StreamReader(fileInfo.OpenRead());
-            var returnValue = streamReader.ReadToEnd();
-            streamReader.Close();
-            return returnValue;
+            using (var streamReader = new StreamReader(fileInfo.OpenRead()))
+            {
+                var returnValue = streamReader.ReadToEnd();
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -39,10 +40,11 @@ namespace CSHARPStandard.IO
         /// <remarks>Beware as stream passsed in is passed to StreamReader so likely it will be disposed when returned</remarks>
         public static string ReadContents(Stream stream)
         {
-            var streamReader = new StreamReader(stream);
-            var returnValue = streamReader.ReadToEnd();
-            streamReader.Close();
-            return returnValue;
+            using (var streamReader = new StreamReader(stream))
+            {
+                var returnValue = streamReader.ReadToEnd();
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -57,10 +59,11 @@ namespace CSHARPStandard.IO
             if (fileInfo.DirectoryName != null) Directory.CreateDirectory(fileInfo.DirectoryName);
 
             // write the contents of the file
-            var streamWriter = new StreamWriter(fileInfo.OpenWrite());
-            streamWriter.Write(contents);
-            streamWriter.Flush();
-            streamWriter.Close();
+            using (var streamWriter = new StreamWriter(fileInfo.OpenWrite()))
+            {
+                streamWriter.Write(contents);
+                streamWriter.Flush();
+            }
         }
 
         /// <summary>
@@ -73,7 +76,8 @@ namespace CSHARPStandard.IO
         public static void WriteContents(string fileName, string contents, bool overwrite)
         {
             // ensure the directory exists
-            Directory.CreateDirectory(FileHelper.GetDirectoryFromFilePath(fileName));
+            var fileHelper = new FileHelper();
+            Directory.CreateDirectory(fileHelper.GetDirectoryFromFilePath(fileName));
 
             using (
                 var streamWriter = (File.Exists(fileName))
@@ -82,7 +86,6 @@ namespace CSHARPStandard.IO
             {
                 streamWriter.Write(contents);
                 streamWriter.Flush();
-                streamWriter.Close();
             }
         }
     }

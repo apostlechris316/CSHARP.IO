@@ -1,14 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Chris Williams</Authors>
     <Company>Read Watch Create</Company>
     <Product>.NET Standard Libraries</Product>
     <Description>Wraps System.IO to provide examples and starting points for working with File and other IO</Description>
-    <Copyright>Copyright ©2015-2017 Read Watch Create</Copyright>
-    <Version>1.0.0.13</Version>
+    <Copyright>Copyright ©2015-2018 Read Watch Create</Copyright>
+    <Version>1.0.0.15</Version>
+    <PackageReleaseNotes>v1.0.0.15 - GetLineCount - Provides a count of the number of lines in a file.</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FileHelper.cs.bak" />
+  </ItemGroup>
 
 </Project>
