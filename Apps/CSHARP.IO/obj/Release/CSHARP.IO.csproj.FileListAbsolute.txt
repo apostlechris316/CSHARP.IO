@@ -1,6 +1,0 @@
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Release\CSHARP.IO.dll
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\bin\Release\CSHARP.IO.pdb
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Release\CSHARP.IO.csprojResolveAssemblyReference.cache
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Release\CSHARP.IO.csproj.CoreCompileInputs.cache
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Release\CSHARP.IO.dll
-C:\_git\CSHARP.IO\Apps\CSHARP.IO\obj\Release\CSHARP.IO.pdb
